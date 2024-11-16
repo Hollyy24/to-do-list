@@ -1,0 +1,52 @@
+{% extends 'base.html'%}
+
+
+<body>
+
+{% block content%}
+<h1 style="padding-top:10px" class="text-center"> Your To Do List</h1>
+<div style="padding-top:10px" class="container">
+    <div class="row">
+        <div class="col-6">
+            <div>
+                {% for todo in todos %}
+                <div class="container">
+                    <div style="padding:5px 5px 5px 5px">
+                        <div class="row" style="border: 1px solid gray;border-radius: 5px;padding:5px 5px 5px 5px">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="gray"
+                                 class="bi bi-forward col-1 " viewBox="0 0 16 16">
+                                <path d="M9.502 5.513a.144.144 0 0 0-.202.134V6.65a.5.5 0 0 1-.5.5H2.5v2.9h6.3a.5.5 0 0 1 .5.5v1.003c0 .108.11.176.202.134l3.984-2.933.042-.028a.147.147 0 0 0 0-.252l-.042-.028zM8.3 5.647a1.144 1.144 0 0 1 1.767-.96l3.994 2.94a1.147 1.147 0 0 1 0 1.946l-3.994 2.94a1.144 1.144 0 0 1-1.767-.96v-.503H2a.5.5 0 0 1-.5-.5v-3.9a.5.5 0 0 1 .5-.5h6.3z"/>
+                            </svg>
+
+                            <p class="col-8" >{{ todo.context}}</p>
+                            <form class="col-3" method="post" action="{{ url_for('delete_list', todo_id=todo.id) }}"
+                                  style="display:inline;">
+                                <button type="submit" class="btn btn-link p-0"
+                                        style="color: inherit; text-decoration: none;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="pink"
+                                         class="bi bi-trash3-fill" viewBox="0 0 16 16">
+                                        <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5"/>
+                                    </svg>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-6">
+            <form method="post">
+                {{ list.hidden_tag() }}
+                <div class="text-center h5 ">
+                    <p style="padding-top:10px">{{ list.context.label(class="badge rounded-pill bg-secondary")}} </p>
+                    <p>{{ list.context(class="form-control-lg") }} </p>
+                    <p style="padding-top:10px">{{ list.submit(class='btn btn-secondary') }} </p>
+                </div>
+            </form>
+        </div>
+
+    </div>
+    {% endblock%}
+
+</body>

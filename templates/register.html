@@ -1,0 +1,23 @@
+{% extends 'base.html'%}
+
+
+<body>
+
+{% block content%}
+<form method="post">
+    {{ register.hidden_tag() }}
+    <div style="padding-top:100px" class="text-center h5 ">
+        <p style="padding-top:10px">{{ register.name.label(class="badge rounded-pill bg-secondary")}} </p>
+        <p >{{ register.name(class="form-control-sm") }} </p>
+        <p style="padding-top:10px">{{ register.password.label(class="badge rounded-pill bg-secondary")}} </p>
+        <p>{{ register.password(class="form-control-sm") }} </p>
+        <p style="padding-top:10px">{{ register.email.label(class="badge rounded-pill bg-secondary")}}</p>
+        <p>{{ register.email(class="form-control-sm") }} </p>
+        <p style="padding-top:10px">{{ register.submit(class='btn btn-secondary') }} </p>
+    </div>
+
+</form>
+
+{% endblock%}
+
+</body>

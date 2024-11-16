@@ -1,0 +1,21 @@
+{% extends 'base.html'%}
+
+
+<body>
+
+{% block content%}
+<form method="post">
+    {{ login.hidden_tag() }}
+    <div style="padding-top:100px" class="text-center h5 ">
+        <p style="padding-top:10px">{{ login.email.label(class="badge rounded-pill bg-secondary")}}</p>
+        <p>{{ login.email(class="form-control-sm") }} </p>
+        <p style="padding-top:10px">{{ login.password.label(class="badge rounded-pill bg-secondary")}} </p>
+        <p>{{ login.password(class="form-control-sm") }} </p>
+        <p style="padding-top:10px">{{ login.submit(class='btn btn-secondary') }} </p>
+    </div>
+
+</form>
+
+{% endblock%}
+
+</body>
